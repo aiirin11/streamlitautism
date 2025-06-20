@@ -1,0 +1,86 @@
+<html>
+
+
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #001b61;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 300px;
+      padding: 15px;
+      margin: 10px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background-color: #001b61;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0034a1;
+    }
+  </style>
+
+
+  <div class="form-container">  
+  
+  <title>Enter Your Details</title>
+  <form method="POST" action="index1">
+  
+  <input type="number" name="age" placeholder="Age" required><br>
+  
+  <select name="gender" required>
+    <option disabled selected>Choose your gender</option>
+    <option value="1">Male</option>
+    <option value="0">Female</option>
+  </select><br>
+
+  <select name="jaundice" required>
+    <option disabled selected>Have jaundice during birth?</option>
+    <option value="1">Yes</option>
+    <option value="0">No</option>
+  </select><br>
+
+  <select name="relation" required>
+    <option disabled selected>What is your relationship?</option>
+    <option value="3">Self</option>
+    <option value="0">Family</option>
+    <option value="2">Others</option>
+    <option value="1">Healthcare professional</option>
+  </select><br>
+
+  <button type="submit">Next</button>
+</form>
+</div>
+
+
+</body>
+</html>

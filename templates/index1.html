@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0px;
+            padding 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            display: flex;
+            align-items: flex-start;
+            min-height: 100vh;
+            justify-content: center;
+        }
+        
+        h2 {
+            text-align: center;
+            color; #001b61;
+            font-weight: bold;
+            margin-bottom:20px;
+            
+        }
+        
+        table {
+            border-collapse: separate;
+            border-spacing: 0 16px; 
+            width: 100%;
+        }
+        
+        tr.question-row {
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: left;
+        }
+        
+        tr.question-row td {
+            background-color: white !important;
+            text-align: center;
+            padding: 16px;
+            text-align: left;
+        }
+        
+        tr.question-row td:first-child {
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+        }
+        tr.question-row td:last-child {
+          border-top-right-radius: 12px;
+          border-bottom-right-radius: 12px;
+        }
+        
+        input[type="checkbox"] {
+          width: 20px;
+          height: 20px;
+          border-radius: 6px;
+          border: 2px solid #003366;
+          cursor: pointer;
+          accent-color: #003366;
+        }
+        
+        button {
+            display: block;
+            margin-top: 30px; /*distance from  table*/
+            width: 100%;          
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #001b61;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        button:hover {
+            background-color: #0034a1;
+        }
+    </style>
+    
+    <script>
+        function ensureOneCheckboxPerRow(event, rowName) {
+          let checkboxes = document.getElementsByName(rowName);
+          checkboxes.forEach((checkbox) => {
+            if (checkbox !== event.target) {
+              checkbox.checked = false;
+            }
+          });
+        }
+    </script>
+</head>
+
+<body>
+    <div style="width: 100%;max-width: 1200px; margin : auto;">
+        <h2>Please tick one option per question only:</h2>
+        <form method="POST" action="/predict">
+          <input type="hidden" name="age" value="{{ age }}">
+          <input type="hidden" name="gender" value="{{ gender }}">
+          <input type="hidden" name="jaundice" value="{{ jaundice }}">
+          <input type="hidden" name="relation" value="{{ relation }}">
+          
+            <table>
+              <tr>
+                <th>Question</th>
+                <th>Definitely Agree</th>
+                <th>Slightly Agree</th>
+                <th>Slightly Disagree</th>
+                <th>Definitely Disagree</th>
+              </tr>
+              
+             <tr class="question-row">
+                <td>S/he often notices small sounds when others do not</td>
+                <td><input type="checkbox" name="q1" value="1" onclick="ensureOneCheckboxPerRow(event, 'q1')"></td>
+                <td><input type="checkbox" name="q1" value="1" onclick="ensureOneCheckboxPerRow(event, 'q1')"></td>
+                <td><input type="checkbox" name="q1" value="0" onclick="ensureOneCheckboxPerRow(event, 'q1')"></td>
+                <td><input type="checkbox" name="q1" value="0" onclick="ensureOneCheckboxPerRow(event, 'q1')"></td>
+              </tr>
+              
+              <tr class="question-row">
+                <td>S/he usually concentrates more on the whole picture, rather than the small details</td>
+                <td><input type="checkbox" name="q2" value="1" onclick="ensureOneCheckboxPerRow(event, 'q2')"></td>
+                <td><input type="checkbox" name="q2" value="1" onclick="ensureOneCheckboxPerRow(event, 'q2')"></td>
+                <td><input type="checkbox" name="q2" value="0" onclick="ensureOneCheckboxPerRow(event, 'q2')"></td>
+                <td><input type="checkbox" name="q2" value="0" onclick="ensureOneCheckboxPerRow(event, 'q2')"></td>
+              </tr>
+              
+              <tr class="question-row">
+                <td>In a social group, s/he can easily keep track of several different people’s conversations</td>
+                <td><input type="checkbox" name="q3" value="1" onclick="ensureOneCheckboxPerRow(event, 'q3')"></td>
+                <td><input type="checkbox" name="q3" value="1" onclick="ensureOneCheckboxPerRow(event, 'q3')"></td>
+                <td><input type="checkbox" name="q3" value="0" onclick="ensureOneCheckboxPerRow(event, 'q3')"></td>
+                <td><input type="checkbox" name="q3" value="0" onclick="ensureOneCheckboxPerRow(event, 'q3')"></td>
+              </tr>
+              
+              <tr class="question-row">
+                <td>S/he finds it easy to go back and forth between different activities</td>
+                <td><input type="checkbox" name="q4" value="1" onclick="ensureOneCheckboxPerRow(event, 'q4')"></td>
+                <td><input type="checkbox" name="q4" value="1" onclick="ensureOneCheckboxPerRow(event, 'q4')"></td>
+                <td><input type="checkbox" name="q4" value="0" onclick="ensureOneCheckboxPerRow(event, 'q4')"></td>
+                <td><input type="checkbox" name="q4" value="0" onclick="ensureOneCheckboxPerRow(event, 'q4')"></td>
+              </tr>
+              
+              <tr class="question-row">
+                <td>S/he doesn’t know how to keep a conversation going with his/her peers</td>
+                <td><input type="checkbox" name="q5" value="1" onclick="ensureOneCheckboxPerRow(event, 'q5')"></td>
+                <td><input type="checkbox" name="q5" value="1" onclick="ensureOneCheckboxPerRow(event, 'q5')"></td>
+                <td><input type="checkbox" name="q5" value="0" onclick="ensureOneCheckboxPerRow(event, 'q5')"></td>
+                <td><input type="checkbox" name="q5" value="0" onclick="ensureOneCheckboxPerRow(event, 'q5')"></td>
+              </tr>
+              
+              <tr class="question-row">
+                <td>S/he is good at social chit-chat</td>
+                <td><input type="checkbox" name="q6" value="1" onclick="ensureOneCheckboxPerRow(event, 'q6')"></td>
+                <td><input type="checkbox" name="q6" value="1" onclick="ensureOneCheckboxPerRow(event, 'q6')"></td>
+                <td><input type="checkbox" name="q6" value="0" onclick="ensureOneCheckboxPerRow(event, 'q6')"></td>
+                <td><input type="checkbox" name="q6" value="0" onclick="ensureOneCheckboxPerRow(event, 'q6')"></td>
+              </tr>
+              
+              <tr class="question-row">
+                <td>When s/he is read a story, s/he finds it difficult to work out the character’s intentions or feelings</td>
+                <td><input type="checkbox" name="q7" value="1" onclick="ensureOneCheckboxPerRow(event, 'q7')"></td>
+                <td><input type="checkbox" name="q7" value="1" onclick="ensureOneCheckboxPerRow(event, 'q7')"></td>
+                <td><input type="checkbox" name="q7" value="0" onclick="ensureOneCheckboxPerRow(event, 'q7')"></td>
+                <td><input type="checkbox" name="q7" value="0" onclick="ensureOneCheckboxPerRow(event, 'q7')"></td>
+              </tr>
+            
+              <tr class="question-row">
+                <td>When s/he was in preschool, s/he used to enjoy playing games involving pretending with other children</td>
+                <td><input type="checkbox" name="q8" value="1" onclick="ensureOneCheckboxPerRow(event, 'q8')"></td>
+                <td><input type="checkbox" name="q8" value="1" onclick="ensureOneCheckboxPerRow(event, 'q8')"></td>
+                <td><input type="checkbox" name="q8" value="0" onclick="ensureOneCheckboxPerRow(event, 'q8')"></td>
+                <td><input type="checkbox" name="q8" value="0" onclick="ensureOneCheckboxPerRow(event, 'q8')"></td>
+              </tr>
+            
+              <tr class="question-row">
+                <td>S/he finds it easy to work out what someone is thinking or feeling just by looking at their face</td>
+                <td><input type="checkbox" name="q9" value="1" onclick="ensureOneCheckboxPerRow(event, 'q9')"></td>
+                <td><input type="checkbox" name="q9" value="1" onclick="ensureOneCheckboxPerRow(event, 'q9')"></td>
+                <td><input type="checkbox" name="q9" value="0" onclick="ensureOneCheckboxPerRow(event, 'q9')"></td>
+                <td><input type="checkbox" name="q9" value="0" onclick="ensureOneCheckboxPerRow(event, 'q9')"></td>
+              </tr>
+            
+              <tr class="question-row">
+                <td>S/he finds it hard to make new friends</td>
+                <td><input type="checkbox" name="q10" value="1" onclick="ensureOneCheckboxPerRow(event, 'q10')"></td>
+                <td><input type="checkbox" name="q10" value="1" onclick="ensureOneCheckboxPerRow(event, 'q10')"></td>
+                <td><input type="checkbox" name="q10" value="0" onclick="ensureOneCheckboxPerRow(event, 'q10')"></td>
+                <td><input type="checkbox" name="q10" value="0" onclick="ensureOneCheckboxPerRow(event, 'q10')"></td>
+              </tr>
+            
+            </table>
+            
+            <button type="submit">Submit</button>
+    
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,144 @@
+-<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autism Screening Result</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* Negative Result Styling (ALL WELL) */
+        .negative-container {
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 150, 136, 0.3);
+            max-width: 500px;
+            width: 90%;
+            border: 3px solid #4db6ac;
+        }
+
+        /* Positive Result Styling (ASD DETECTED) */
+        .positive-container {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+            max-width: 500px;
+            width: 90%;
+            border: 3px solid #ef9a9a;
+        }
+
+        h1 {
+            color: #00695c;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .positive-title {
+            color: #c62828;
+        }
+
+        .result-text {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .negative-text {
+            color: #00796b;
+        }
+
+        .positive-text {
+            color: #d32f2f;
+        }
+
+        .footer-text {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .negative-footer {
+            color: #00897b;
+        }
+
+        .positive-footer {
+            color: #b71c1c;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .negative-btn {
+            background-color: #00897b;
+            box-shadow: 0 4px 8px rgba(0, 137, 123, 0.3);
+        }
+
+        .positive-btn {
+            background-color: #c62828;
+            box-shadow: 0 4px 8px rgba(198, 40, 40, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    {% if result == 1 %}
+    <!-- POSITIVE RESULT (ASD DETECTED) -->
+    <div class="positive-container">
+        <h1 class="positive-title">RESULT</h1>
+        
+        <div class="result-text positive-text">
+            <p>THE SYSTEM PREDICTS THAT YOU MAY HAVE</p>
+            <p>AUTISM SPECTRUM DISORDER (ASD). PLEASE</p>
+            <p>CONSIDER SEEING A MEDICAL SPECIALIST FOR</p>
+            <p>FURTHER ASSESSMENT.</p>
+        </div>
+        
+        <p class="footer-text positive-footer">TAKE CARE!</p>
+        
+        <button onclick="window.location.href='/'" class="btn positive-btn">Start New Screening</button>
+    </div>
+    {% elif result == 0 %}
+    <!-- NEGATIVE RESULT (ALL WELL) -->
+    <div class="negative-container">
+        <h1>RESULT</h1>
+        
+        <div class="result-text negative-text">
+            <p>ALL WELL!</p>
+            <p>THE SYSTEM FOUND NO AUTISM</p>
+            <p>SPECTRUM DISORDER (ASD) TRAITS</p>
+        </div>
+        
+        <button onclick="window.location.href='/'" class="btn negative-btn">Start New Screening</button>
+    </div>
+    {% endif %}
+</body>
+</html>
